@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+
+
 export default function MyApp() {
 
   const [advice, setAdvice] = useState("");
@@ -12,15 +14,21 @@ export default function MyApp() {
     setCount((c) => c + 1);
   }
 
-  useEffect ( function () {
-    getAdvice()
+  useEffect( function () {
+    getAdvice();
   }, []);
 
   return (
     <div>
       <h1>{advice}</h1>
       <button onClick={getAdvice}>Get Advice!</button>
-      <p>You've alread read <strong>{count}</strong> number of advices!</p>
+      <Message count={count} />
     </div>
+  );
+}
+
+function Message(props) {
+  return(
+    <p>You've alread read <strong>{props.count}</strong> number of advices!</p>
   );
 }
